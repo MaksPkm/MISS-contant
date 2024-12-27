@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валентинка</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 300% 300%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .heart {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: pulse 1.5s infinite;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -60px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 60px;
+            top: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(-45deg); }
+            50% { transform: scale(1.2) rotate(-45deg); }
+        }
+
+        .message {
+            position: absolute;
+            top: 80%;
+            text-align: center;
+            font-size: 28px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .heart {
+                width: 80px;
+                height: 80px;
+            }
+
+            .heart:before, .heart:after {
+                width: 80px;
+                height: 80px;
+            }
+
+            .message {
+                font-size: 20px;
+            }
+        }
+
+        .falling-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: fall 5s linear infinite;
+        }
+
+        .falling-heart:before,
+        .falling-heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .falling-heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .falling-heart:after {
+            top: 0;
+            left: 10px;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(-45deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(-45deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="./i-love-you-276751.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="heart"></div>
+    <div class="message">MISS YOU❤️</div>
+
+    <script>
+        function createFallingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'falling-heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createFallingHeart, 300);
+    </script>
+</body>
+</html>
