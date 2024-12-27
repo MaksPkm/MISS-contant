@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Валентинка</title>
     <style>
-        body {
+        body {position: relative;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -126,10 +126,14 @@
             0% { transform: translateY(-100vh) rotate(-45deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(-45deg); opacity: 0; }
         }
+        audio {
+            top: 70%;
+            position: absolute;
+        }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
+    <audio autoplay loop controls >
         <source src="./i-love-you-276751.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
